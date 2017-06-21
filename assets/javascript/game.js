@@ -4,12 +4,16 @@ var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 var wins = 0;
 var losses = 0;
 var guessesLeft = 10;
-var yourGuesses = "";
+var letters = [];
 
 
 document.onkeyup = function(event) {
 
 	var userGuess = event.key;
+  letters.push(userGuess);
+  console.log(letters)
+
+
 	var computerGuess = alphabet[Math.floor(Math.random() * alphabet.length)];
 
 	if (userGuess === computerGuess > 0) {
@@ -26,9 +30,11 @@ document.onkeyup = function(event) {
           "<h2>WINS: " + wins + "</h2>" +
           "<h2>LOSSES: " + losses + "</h2>" +
           "<h2>GUESSES LEFT: " + guessesLeft + "</h2>" +
-          "<h2>YOUR GUESSES SO FAR: " + userGuess + "</h2>";
+          "<h2>YOUR GUESSES SO FAR: " + userGuess + "," + letters + "</h2>";
 
           document.querySelector(".game").innerHTML = html;
+
+
 
       if (guessesLeft === 0) {
         document.querySelector(".game").innerHTML = "<h2>YOU GUESSED " + wins + " OUT OF 10 LETTERS</h>" ;
